@@ -47,7 +47,7 @@ registerRoute(({ request }) => request.mode === 'navigate', pageCache);
   assets in these routes.
 
   Workbox gives us many strategies. For the code below we'll be using one 
-  called StateWhileRevalidate. You read about it here:
+  called StaleWhileRevalidate. You read about it here:
 
   https://developer.chrome.com/docs/workbox/caching-strategies-overview/#stale-while-revalidate
 
@@ -66,13 +66,15 @@ registerRoute(({ request }) => request.mode === 'navigate', pageCache);
   array. There is an array method called includes() which does this.
 
   Once we have identified a viable route, we will instantiate the strategy we wish 
-  to use. Remember that it's called StateWhileRevalidate.
+  to use. Remember that it's called StaleWhileRevalidate.
 
   If you supply the correct values below, this file is complete.
 */
 
-registerRoute( ({ request }) => variableForArrayHere.ARRAY_METHOD_HERE(variableForDestinationHere),
-  new CLASSNAME_TO_INSTANTIATE_HERE({
+const paths = ["style", "script", "worker"];
+
+registerRoute( ({ request }) => paths.includes(request.destination),
+  new StaleWhileRevalidate({
     cacheName: 'asset-cache',
     plugins: [
       new CacheableResponsePlugin({
