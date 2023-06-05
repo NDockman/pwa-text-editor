@@ -70,6 +70,10 @@ module.exports = () => {
         template: "./index.html",
         title: "J.A.T.E"
       }),
+      new InjectManifest({
+        swSrc: "./src-sw.js",
+        swDest: "src-sw.js"
+      }),
       new WebpackPwaManifest({
         config: {
           fingerprints: false,
@@ -89,10 +93,6 @@ module.exports = () => {
             }
           ]
         }
-      }),
-      new InjectManifest({
-        swSrc: "./src-sw.js",
-        swDest: "src-sw.js"
       })
     ],
 
@@ -122,7 +122,8 @@ module.exports = () => {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
-              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread','@babel/transform-runtime'],
+              //plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
             },
           },
         },
