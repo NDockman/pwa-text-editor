@@ -75,24 +75,22 @@ module.exports = () => {
         swDest: "src-sw.js"
       }),
       new WebpackPwaManifest({
-        config: {
-          fingerprints: false,
-          inject: true,
-          name: "Just Another Text Editor",
-          short_name: "J.A.T.E",
-          description: "J.A.T.E is a PWA text editor.",
-          background_color: "#225ca3",
-          theme_color: "#225ca3",
-          start_url: "/",
-          publicPath: "/",
-          icons: [
-            {
-              src: path.resolve("src/images/logo.png"),
-              sizes: [96, 128, 192, 256, 384, 512],
-              destination: path.join("assets", "icons")
-            }
-          ]
-        }
+        fingerprints: false,
+        inject: true,
+        name: "Just Another Text Editor",
+        short_name: "J.A.T.E",
+        description: "J.A.T.E is a PWA text editor.",
+        background_color: "#225ca3",
+        theme_color: "#225ca3",
+        start_url: "/",
+        publicPath: "/",
+        icons: [
+          {
+            src: path.resolve("src/images/logo.png"),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join("assets", "icons")
+          }
+        ]
       })
     ],
 
